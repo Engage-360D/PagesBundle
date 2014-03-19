@@ -1,0 +1,24 @@
+{
+    "name": "engage360d/pages-bundle",
+    "type": "symfony-bundle",
+    "description": "Engage360dPagesBundle",
+    "keywords": ["Engage", "360D"],
+    "homepage": "http://github.com/engage-360d",
+
+    "authors": [
+        {
+            "name": "Andrey Linko",
+            "email": "AndreyLinko@gmail.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-0": {
+            "Engage360d\\Bundle\\PagesBundle": ""
+        }
+    },
+
+    "minimum-stability": "dev",
+
+    "target-dir": "Engage360d/Bundle/PagesBundle"
+}
