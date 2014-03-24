@@ -1,0 +1,15 @@
+services:
+    engage360d_pages.form.page:
+        factory_service: form.factory
+        factory_method: createNamed
+        class: Symfony\Component\Form\Form
+        arguments: ["user", "engage360d_pages_page", null, { }]
+        tags:
+            - { name: rest.form, route: post_pages }
+            - { name: rest.form, route: put_pages }
+
+    engage360d_pages.form.page.type:
+        class: Engage360d\Bundle\PagesBundle\Form\Type\PageFormType
+        arguments: [%engage360d_pages.entity.page.class%]
+        tags:
+            - { name: form.type, alias: engage360d_pages_page }

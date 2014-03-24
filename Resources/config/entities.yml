@@ -1,0 +1,2 @@
+parameters:
+    engage360d_pages.entity.page.class: Engage360d\Bundle\PagesBundle\Entity\Page\Page
