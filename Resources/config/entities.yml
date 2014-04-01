@@ -1,2 +1,4 @@
 parameters:
     engage360d_pages.entity.page.class: Engage360d\Bundle\PagesBundle\Entity\Page\Page
+    engage360d_pages.entity.category.class: Engage360d\Bundle\PagesBundle\Entity\Category\Category
+    engage360d_pages.entity.menu.class: Engage360d\Bundle\PagesBundle\Entity\Menu\Menu

@@ -5,7 +5,7 @@
  *
  */
 
-namespace Engage360d\Bundle\PagesBundle\Entity\Page;
+namespace Engage360d\Bundle\PagesBundle\Entity\Menu;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -20,13 +20,11 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use FOS\OAuthServerBundle\Model\ClientManagerInterface;
 use FOS\OAuthServerBundle\Model\ClientInterface;
 
-use FOS\UserBundle\Doctrine\UserManager as BaseManager;
-
 /**
- * Page manager.
+ * Menu manager.
  *
  */
-class PageManager
+class MenuManager
 {
     protected $objectManager;
     protected $class;
@@ -71,14 +69,15 @@ class PageManager
         return $this->repository->findOneBy(array('id' => $id));
     }
 
+    public function findChildrenByParentId($id)
+    {
+        $parent = $this->repository->findOneBy(array('id' => $id));
+        return $this->repository->getTree($parent);
+    }
+
     public function getPage($page = 1, $limit = 25, $select = 'u')
     {
         return $this->repository->findAll();
-    }
-
-    public function getPageByCategory($page = 1, $limit = 25, $categoryId)
-    {
-        return $this->repository->findBy(array('category' => $categoryId));
     }
 
     public function reload($object)

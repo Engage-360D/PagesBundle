@@ -21,7 +21,12 @@ class Engage360dPagesExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load("entities.yml");
+        $loader->load("events.yml");
         $loader->load("form/page.yml");
         $loader->load("manager/page.yml");
+        $loader->load("form/category.yml");
+        $loader->load("manager/category.yml");
+        $loader->load("form/menu.yml");
+        $loader->load("manager/menu.yml");
     }
 }

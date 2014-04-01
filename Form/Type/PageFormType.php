@@ -25,6 +25,15 @@ class PageFormType extends AbstractType
     {
         $builder
             ->add('title', 'text', array('description' => 'Page title'))
+            ->add('active', 'checkbox', array('description' => 'Page active status'))
+            ->add('seoTitle', 'text', array('description' => 'Page seo title'))
+            ->add('seoKeywords', 'text', array('description' => 'Page seo keywords'))
+            ->add('seoDescription', 'text', array('description' => 'Page seo description'))
+            ->add('url', 'text', array('description' => 'Page url'))
+            ->add('category', 'entity', array(
+                'class' => 'Engage360dPagesBundle:Category\Category',
+                'property' => 'name'
+            ))
             ->add('blocks', 'collection', array(
                 'type'      => new PageBlockFormType(),
                 'allow_add' => true,

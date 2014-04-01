@@ -1,0 +1,23 @@
+parameters:
+    engage360d_pages.manager.menu.class: Engage360d\Bundle\PagesBundle\Entity\Menu\MenuManager
+
+services:
+    engage360d_pages.manager.menu:
+        class: %engage360d_pages.manager.menu.class%
+        arguments:
+            - @engage360d_pages.entity_manager.menu
+            - %engage360d_pages.entity.menu.class%
+        tags:
+            - { name: rest.entity_manager, route: get_menus }
+            - { name: rest.entity_manager, route: post_menu }
+            - { name: rest.entity_manager, route: get_menu }
+            - { name: rest.entity_manager, route: put_menu }
+            - { name: rest.entity_manager, route: delete_menu }
+            - { name: rest.entity_manager, route: get_menu_children }
+
+    engage360d_pages.entity_manager.menu:
+        class: Doctrine\ORM\EntityManager
+        public: false
+        factory_service: doctrine
+        factory_method: getManager
+        arguments: [ ] 

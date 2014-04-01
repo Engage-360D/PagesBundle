@@ -13,10 +13,11 @@ services:
             - { name: rest.entity_manager, route: get_page }
             - { name: rest.entity_manager, route: put_pages }
             - { name: rest.entity_manager, route: delete_page }
+            - { name: rest.entity_manager, route: get_category_pages }
 
     engage360d_pages.entity_manager.page:
         class: Doctrine\ORM\EntityManager
         public: false
         factory_service: doctrine
-        factory_method: getEntityManager
+        factory_method: getManager
         arguments: [ ] 

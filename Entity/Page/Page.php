@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
-use FOS\UserBundle\Model\User as BaseUser;
+use Engage360d\Bundle\PagesBundle\Entity\Category\Category;
 
 /**
  * @ORM\Entity
@@ -29,6 +29,11 @@ class Page
     protected $id;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $active;
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $title;
@@ -40,6 +45,32 @@ class Page
     protected $slug;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $seoTitle;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $seoKeywords;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $seoDescription;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $url;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Engage360d\Bundle\PagesBundle\Entity\Category\Category",inversedBy="pages")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
+
+    /**
      * @ORM\OneToMany(targetEntity="PageBlock", mappedBy="page", cascade={"persist"}, fetch="EAGER")
      */
     protected $blocks;
@@ -47,6 +78,16 @@ class Page
     public function __construct()
     {
         $this->blocks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function isActive()
+    {
+        return $this->active;
+    }
+
+    public function setActive($active)
+    {
+        $this->active = $active;
     }
 
     /**
@@ -65,9 +106,59 @@ class Page
         $this->title = $title;
     }
 
+    public function setSeoTitle($title)
+    {
+        $this->seoTitle = $title;
+    }
+
+    public function getSeoTitle()
+    {
+        return $this->seoTitle;
+    }
+
+    public function setSeoKeywords($keywords)
+    {
+        $this->seoKeywords = $keywords;
+    }
+
+    public function getSeoKeywords()
+    {
+        return $this->seoKeywords;
+    }
+
+    public function setSeoDescription($description)
+    {
+        $this->seoDescription = $description;
+    }
+
+    public function getSeoDescription()
+    {
+        return $this->seoDescription;
+    }
+
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    public function getUrl()
+    {
+        return $this->url || $this->slug;
+    }
+
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    public function setCategory(Category $category = null)
+    {
+        $this->category = $category;
+    }
+
+    public function getCategory()
+    {
+      return $this->category;
     }
 
     public function addBlock(PageBlock $block)

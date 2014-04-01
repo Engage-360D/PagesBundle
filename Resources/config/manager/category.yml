@@ -1,0 +1,22 @@
+parameters:
+    engage360d_pages.manager.category.class: Engage360d\Bundle\PagesBundle\Entity\Category\CategoryManager
+
+services:
+    engage360d_pages.manager.category:
+        class: %engage360d_pages.manager.category.class%
+        arguments:
+            - @engage360d_pages.entity_manager.category
+            - %engage360d_pages.entity.category.class%
+        tags:
+            - { name: rest.entity_manager, route: get_categories }
+            - { name: rest.entity_manager, route: post_categories }
+            - { name: rest.entity_manager, route: get_category }
+            - { name: rest.entity_manager, route: put_categories }
+            - { name: rest.entity_manager, route: delete_category }
+
+    engage360d_pages.entity_manager.category:
+        class: Doctrine\ORM\EntityManager
+        public: false
+        factory_service: doctrine
+        factory_method: getManager
+        arguments: [ ] 
