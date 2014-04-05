@@ -9,3 +9,7 @@ engage360d_api_categories:
 engage360d_api_menus:
     type:     rest
     resource: Engage360d\Bundle\PagesBundle\Controller\Api\MenuController
+
+engage360d_api_url:
+    type:     rest
+    resource: Engage360d\Bundle\PagesBundle\Controller\Api\UrlController

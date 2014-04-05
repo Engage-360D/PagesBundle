@@ -71,6 +71,21 @@ class PageManager
         return $this->repository->findOneBy(array('id' => $id));
     }
 
+    public function findByUrl($url)
+    {
+        return $this->repository->findOneBy(array('url' => $url));
+    }
+
+    public function findByUrlPrecondition($precondition)
+    {
+        return $this->repository->createQueryBuilder('u')
+              ->select('u')
+              ->where('u.url LIKE :url')
+              ->setParameter('url', '%'.$precondition.'%')
+              ->getQuery()
+              ->getResult();
+    }
+
     public function getPage($page = 1, $limit = 25, $select = 'u')
     {
         return $this->repository->findAll();

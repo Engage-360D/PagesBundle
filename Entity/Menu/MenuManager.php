@@ -75,6 +75,13 @@ class MenuManager
         return $this->repository->getTree($parent);
     }
 
+    public function getByRootName($root)
+    {
+        $parent = $this->repository->findOneBy(array('name' => $root));
+        $tree = $this->repository->getTree($parent);
+        return $tree[0]->getChildren();
+    }
+
     public function getPage($page = 1, $limit = 25, $select = 'u')
     {
         return $this->repository->findAll();

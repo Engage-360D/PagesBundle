@@ -94,7 +94,7 @@ class Menu
 
     public function getUrl()
     {
-        return $this->url || $this->slug;
+        return $this->url;
     }
 
     public function getSlug()
@@ -125,5 +125,10 @@ class Menu
     public function getLevel()
     {
         return $this->level;
+    }
+
+    public function getChildren()
+    {
+        return $this->children;
     }
 }

@@ -143,7 +143,7 @@ class Page
 
     public function getUrl()
     {
-        return $this->url || $this->slug;
+        return $this->url;
     }
 
     public function getSlug()
