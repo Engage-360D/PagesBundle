@@ -176,4 +176,20 @@ class Page
     {
         return $this->blocks;
     }
+    
+    public function isMain()
+    {
+        if ($this->getCategory()) {
+          return $this->getCategory()->getPage() === $this;
+        }
+
+        return false;
+    }
+
+    public function setMain($main)
+    {
+        if ($this->getCategory()) {
+          $this->getCategory()->setPage($this);
+        }
+    }
 }

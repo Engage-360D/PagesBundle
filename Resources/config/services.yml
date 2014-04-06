@@ -1,0 +1,3 @@
+services:
+    engage360d_pages.blocks.converter:
+        class: Engage360d\Bundle\PagesBundle\Converter\Converter

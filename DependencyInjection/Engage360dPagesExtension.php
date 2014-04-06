@@ -28,5 +28,6 @@ class Engage360dPagesExtension extends Extension
         $loader->load("manager/category.yml");
         $loader->load("form/menu.yml");
         $loader->load("manager/menu.yml");
+        $loader->load("services.yml");
     }
 }

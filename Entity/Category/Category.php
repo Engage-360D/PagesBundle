@@ -45,6 +45,12 @@ class Category
     protected $slug;
 
     /**
+     * @ORM\OneToOne(targetEntity="Engage360d\Bundle\PagesBundle\Entity\Page\Page", fetch="LAZY")
+     * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
+     */
+    protected $page;
+
+    /**
      * @ORM\OneToMany(
      *  targetEntity="Engage360d\Bundle\PagesBundle\Entity\Page\Page",
      *  mappedBy="category",
@@ -93,6 +99,16 @@ class Category
     public function setSlug($slug)
     {
         $this->slug = $slug;
+    }
+
+    public function setPage(Page $page)
+    {
+        $this->page = $page;
+    }
+
+    public function getPage()
+    {
+        return $this->page;
     }
 
     public function addPage(Page $page)

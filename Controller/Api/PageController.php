@@ -82,6 +82,7 @@ class PageController extends Controller
         }
 
         $entityManager->update($page);
+
         return $page;
     }
 

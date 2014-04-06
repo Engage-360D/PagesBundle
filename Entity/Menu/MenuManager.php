@@ -79,7 +79,12 @@ class MenuManager
     {
         $parent = $this->repository->findOneBy(array('name' => $root));
         $tree = $this->repository->getTree($parent);
-        return $tree[0]->getChildren();
+
+        if (count($tree) > 0) {
+          return $tree[0]->getChildren();
+        } else {
+          return $tree;
+        }
     }
 
     public function getPage($page = 1, $limit = 25, $select = 'u')

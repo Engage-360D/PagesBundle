@@ -40,6 +40,10 @@ class PageFormType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false,
             ))
+            ->add('main', 'checkbox', array(
+                'description' => 'Page is main for category',
+                'required' => false,
+            ))
         ;
     }
 
