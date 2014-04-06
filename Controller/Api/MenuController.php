@@ -50,7 +50,7 @@ class MenuController extends RestController
         return $this->container
             ->get('engage360d_rest.entity_manager.factory')
             ->getEntityManagerByRoute($this->getRequest()->get('_route'))
-            ->getPage($page, $limit);
+            ->getRootNodes($page, $limit);
     }
 
     /**

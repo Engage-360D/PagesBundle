@@ -11,6 +11,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Form\Exception\InvalidPropertyPathException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as Controller;
@@ -18,13 +19,14 @@ use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Engage360d\Bundle\RestBundle\Controller\RestController;
 
 /**
  * Rest controller для работы со страницами (pages).
  *
  * @author Andrey Linko <AndreyLinko@gmail.com>
  */
-class PageController extends Controller
+class PageController extends RestController
 {
     /**
      *
@@ -78,7 +80,7 @@ class PageController extends Controller
         $form->bind($this->getRequest()->request->all());
 
         if (!$form->isValid()) {
-            throw new HttpException(400, "Not valid.");
+            return new JsonResponse($this->getErrorMessages($form), 400);
         }
 
         $entityManager->update($page);
@@ -133,7 +135,7 @@ class PageController extends Controller
         $form->bind($this->getRequest()->request->all());
 
         if (!$form->isValid()) {
-            throw new HttpException(400, "Page not valid.");
+            return new JsonResponse($this->getErrorMessages($form), 400);
         }
 
         $entityManager->update($page);

@@ -87,6 +87,14 @@ class MenuManager
         }
     }
 
+    public function getRootNodes($page = 1, $limit = 25, $select = 'u')
+    {
+        return $this->repository
+            ->getRootNodesQueryBuilder()
+            ->getQuery()
+            ->getResult();
+    }
+
     public function getPage($page = 1, $limit = 25, $select = 'u')
     {
         return $this->repository->findAll();
