@@ -71,7 +71,7 @@ class Page
     protected $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="PageBlock", mappedBy="page", cascade={"persist"}, fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="PageBlock", mappedBy="page", cascade={"all"}, fetch="EAGER")
      */
     protected $blocks;
 
