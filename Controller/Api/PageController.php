@@ -80,7 +80,7 @@ class PageController extends RestController
         $form->bind($this->getRequest()->request->all());
 
         if (!$form->isValid()) {
-            return new JsonResponse($this->getErrorMessages($form), 400);
+            return new JsonResponse($this->getErrorMessages($form), 500);
         }
 
         $entityManager->update($page);
@@ -134,8 +134,9 @@ class PageController extends RestController
 
         $form->bind($this->getRequest()->request->all());
 
+
         if (!$form->isValid()) {
-            return new JsonResponse($this->getErrorMessages($form), 400);
+            return new JsonResponse($this->getErrorMessages($form), 500);
         }
 
         $entityManager->update($page);
