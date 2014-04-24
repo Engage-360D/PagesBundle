@@ -79,6 +79,11 @@ class Page
     {
         $this->blocks = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function isActive()
     {
