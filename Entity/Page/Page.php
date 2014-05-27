@@ -150,6 +150,11 @@ class Page
     {
         return $this->url;
     }
+    
+    public function setSlug($slug)
+    {
+        return $this->slug = $slug;
+    }
 
     public function getSlug()
     {
